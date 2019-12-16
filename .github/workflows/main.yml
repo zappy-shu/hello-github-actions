@@ -15,7 +15,6 @@ jobs:
         echo "Extract DMG."
         hdiutil attach docker.dmg
         echo "Install Docker."
-        echo "ls"
-        sudo find / | grep Docker.app
+        sudo /Volumes/Docker/Docker.app/Contents/MacOS/Docker --quit-after-install --unattended
     - name: docker version
       run: docker version
