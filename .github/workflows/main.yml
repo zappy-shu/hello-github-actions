@@ -4,9 +4,17 @@ on: push
 jobs:
   build:
     name: Hello world action
-    runs-on: windows-latest
+    runs-on: macos-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: ./action-a
-      env:
-        MY_NAME: "Mona"
+    - name: install docker desktop
+      run: |
+        sudo ls
+        echo "Downloading DMG."
+        curl -Lo docker.dmg https://download.docker.com/mac/stable/28905/Docker.dmg
+        echo "Extract DMG."
+        hdiutil attach docker.dmg
+        echo "Install Docker."
+        sudo /Applications/Docker.app/Contents/MacOS/Docker --quit-after-install --unattended
+    - name: docker version
+      run: docker version
