@@ -4,7 +4,7 @@ on: push
 jobs:
   build:
     name: Hello world action
-    runs-on: windows-latest
+    runs-on: mac-latest
     steps:
     - uses: actions/checkout@v1
     - name: docker build
